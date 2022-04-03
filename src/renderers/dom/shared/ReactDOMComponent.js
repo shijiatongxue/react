@@ -494,6 +494,7 @@ ReactDOMComponent.Mixin = {
    * @param {?object} info about the host container
    * @param {object} context
    * @return {string} The computed markup.
+   * TODO: 创建元素并挂载到容器上
    */
   mountComponent: function(
     transaction,
@@ -623,8 +624,10 @@ ReactDOMComponent.Mixin = {
       if (!this._hostParent) {
         DOMPropertyOperations.setAttributeForRoot(el);
       }
+      // 更新 DOM 属性
       this._updateDOMProperties(null, props, transaction);
       var lazyTree = DOMLazyTree(el);
+      // TODO: 处理 children
       this._createInitialChildren(transaction, props, context, lazyTree);
       mountImage = lazyTree;
     } else {
@@ -838,6 +841,7 @@ ReactDOMComponent.Mixin = {
           DOMLazyTree.queueText(lazyTree, contentToUse);
         }
       } else if (childrenToUse != null) {
+        // TODO:
         var mountImages = this.mountChildren(
           childrenToUse,
           transaction,

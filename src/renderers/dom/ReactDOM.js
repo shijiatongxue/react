@@ -27,7 +27,7 @@ ReactDefaultInjection.inject();
 
 var ReactDOM = {
   findDOMNode: findDOMNode,
-  render: ReactMount.render,
+  render: ReactMount.render, // TODO:
   unmountComponentAtNode: ReactMount.unmountComponentAtNode,
   version: ReactVersion,
 

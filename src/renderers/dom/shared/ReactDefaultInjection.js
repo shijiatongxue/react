@@ -76,6 +76,7 @@ function inject() {
   });
 
   ReactInjection.Updates.injectReconcileTransaction(ReactReconcileTransaction);
+  // TODO:
   ReactInjection.Updates.injectBatchingStrategy(ReactDefaultBatchingStrategy);
 
   ReactInjection.Component.injectEnvironment(ReactComponentBrowserEnvironment);

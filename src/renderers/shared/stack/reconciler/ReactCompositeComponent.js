@@ -173,6 +173,7 @@ var ReactCompositeComponent = {
    * @return {?string} Rendered markup to be inserted into the DOM.
    * @final
    * @internal
+   * TODO: 复合组件的挂载方法
    */
   mountComponent: function(
     transaction,
@@ -186,6 +187,7 @@ var ReactCompositeComponent = {
     this._hostContainerInfo = hostContainerInfo;
 
     var publicProps = this._currentElement.props;
+    // 处理 context
     var publicContext = this._processContext(context);
 
     var Component = this._currentElement.type;
@@ -193,6 +195,7 @@ var ReactCompositeComponent = {
     var updateQueue = transaction.getUpdateQueue();
 
     // Initialize the public class
+    // TODO: 创建组件
     var doConstruct = shouldConstruct(Component);
     var inst = this._constructComponent(
       doConstruct,
@@ -347,6 +350,7 @@ var ReactCompositeComponent = {
       );
     }
 
+    // 执行 componentDidMount 函数
     if (inst.componentDidMount) {
       if (__DEV__) {
         transaction.getReactMountReady().enqueue(() => {
@@ -357,6 +361,9 @@ var ReactCompositeComponent = {
           );
         });
       } else {
+        // TODO: 如果在 componentDidMount 时 setState 会怎样？
+        // What is transaction
+        // 会把 componentDidMount 的操作 queue 一下
         transaction.getReactMountReady().enqueue(inst.componentDidMount, inst);
       }
     }
@@ -470,6 +477,7 @@ var ReactCompositeComponent = {
     return markup;
   },
 
+  // TODO:
   performInitialMount: function(
     renderedElement,
     hostParent,
@@ -484,6 +492,7 @@ var ReactCompositeComponent = {
       debugID = this._debugID;
     }
 
+    // 如果存在 willMount 函数
     if (inst.componentWillMount) {
       if (__DEV__) {
         measureLifeCyclePerf(
@@ -514,6 +523,7 @@ var ReactCompositeComponent = {
     );
     this._renderedComponent = child;
 
+    // 递归挂载子组件
     var markup = ReactReconciler.mountComponent(
       child,
       transaction,
@@ -1007,6 +1017,8 @@ var ReactCompositeComponent = {
    *
    * @param {ReactReconcileTransaction} transaction
    * @internal
+   * 
+   * TODO: DOM diff here
    */
   _updateRenderedComponent: function(transaction, context) {
     var prevComponentInstance = this._renderedComponent;

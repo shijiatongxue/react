@@ -100,6 +100,7 @@ Object.assign(ReactUpdatesFlushTransaction.prototype, Transaction, {
 
 PooledClass.addPoolingTo(ReactUpdatesFlushTransaction);
 
+// TODO:
 function batchedUpdates(callback, a, b, c, d, e) {
   ensureInjected();
   return batchingStrategy.batchedUpdates(callback, a, b, c, d, e);
@@ -116,6 +117,7 @@ function mountOrderComparator(c1, c2) {
   return c1._mountOrder - c2._mountOrder;
 }
 
+// TODO:
 function runBatchedUpdates(transaction) {
   var len = transaction.dirtyComponentsLength;
   invariant(
@@ -182,6 +184,7 @@ function runBatchedUpdates(transaction) {
   }
 }
 
+// TODO: 执行实际的更新操作
 var flushBatchedUpdates = function() {
   // ReactUpdatesFlushTransaction's wrappers will clear the dirtyComponents
   // array and perform any updates enqueued by mount-ready handlers (i.e.,
@@ -207,6 +210,7 @@ var flushBatchedUpdates = function() {
 /**
  * Mark a component as needing a rerender, adding an optional callback to a
  * list of functions which will be executed once the rerender occurs.
+ * TODO: setState 调用此函数
  */
 function enqueueUpdate(component) {
   ensureInjected();

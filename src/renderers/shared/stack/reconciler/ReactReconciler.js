@@ -51,6 +51,8 @@ var ReactReconciler = {
         );
       }
     }
+    // TODO: internalInstance 为 ReactDOMComponent 类型
+    // @see src/renderers/dom/shared/ReactDOMComponent.js
     var markup = internalInstance.mountComponent(
       transaction,
       hostParent,
@@ -178,6 +180,8 @@ var ReactReconciler = {
    * @param {ReactComponent} internalInstance
    * @param {ReactReconcileTransaction} transaction
    * @internal
+   * 
+   * TODO:
    */
   performUpdateIfNecessary: function(
     internalInstance,

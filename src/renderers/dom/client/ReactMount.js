@@ -3,7 +3,7 @@
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- *
+ * TODO:
  * @providesModule ReactMount
  */
 
@@ -88,6 +88,7 @@ function internalGetID(node) {
  * @param {DOMElement} container DOM element to mount into.
  * @param {ReactReconcileTransaction} transaction
  * @param {boolean} shouldReuseMarkup If true, do not insert markup
+ * TODO: 把组件经过包装挂载在 DOM 上
  */
 function mountComponentIntoNode(
   wrapperInstance,
@@ -106,6 +107,7 @@ function mountComponentIntoNode(
     console.time(markerName);
   }
 
+  // TODO: 对组件进行 diff 和包装？
   var markup = ReactReconciler.mountComponent(
     wrapperInstance,
     transaction,
@@ -120,7 +122,7 @@ function mountComponentIntoNode(
   }
 
   wrapperInstance._renderedComponent._topLevelWrapper = wrapperInstance;
-  ReactMount._mountImageIntoNode(
+  ReactMount._mountImageIntoNode( // TODO:
     markup,
     container,
     wrapperInstance,
@@ -356,6 +358,7 @@ var ReactMount = {
    * @param {DOMElement} container container to render into
    * @param {boolean} shouldReuseMarkup if we should skip the markup insertion
    * @return {ReactComponent} nextComponent
+   * TODO:
    */
   _renderNewRootComponent: function(
     nextElement,
@@ -382,12 +385,15 @@ var ReactMount = {
     );
 
     ReactBrowserEventEmitter.ensureScrollValueMonitoring();
+    // TODO: 初始化组件类型
+    // @see src/renderers/shared/stack/reconciler/instantiateReactComponent.js
     var componentInstance = instantiateReactComponent(nextElement, false);
 
     // The initial render is synchronous but any updates that happen during
     // rendering, in componentWillMount or componentDidMount, will be batched
     // according to the current batching strategy.
 
+    // TODO:
     ReactUpdates.batchedUpdates(
       batchedMountComponentIntoNode,
       componentInstance,
@@ -433,6 +439,7 @@ var ReactMount = {
     );
   },
 
+  // TODO:
   _renderSubtreeIntoContainer: function(
     parentComponent,
     nextElement,
@@ -563,6 +570,7 @@ var ReactMount = {
    * @param {DOMElement} container DOM element to render into.
    * @param {?function} callback function triggered on completion
    * @return {ReactComponent} Component instance rendered in `container`.
+   * TODO:
    */
   render: function(nextElement, container, callback) {
     return ReactMount._renderSubtreeIntoContainer(
@@ -644,6 +652,7 @@ var ReactMount = {
     return true;
   },
 
+  // TODO: 挂载
   _mountImageIntoNode: function(
     markup,
     container,

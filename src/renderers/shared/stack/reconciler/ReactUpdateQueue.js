@@ -226,6 +226,7 @@ var ReactUpdateQueue = {
    * @param {ReactClass} publicInstance The instance that should rerender.
    * @param {object} partialState Next partial state to be merged with state.
    * @internal
+   * TODO:
    */
   enqueueSetState: function(publicInstance, partialState) {
     if (__DEV__) {
@@ -251,6 +252,7 @@ var ReactUpdateQueue = {
       (internalInstance._pendingStateQueue = []);
     queue.push(partialState);
 
+    // TODO: ？
     enqueueUpdate(internalInstance);
   },
 

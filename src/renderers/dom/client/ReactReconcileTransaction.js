@@ -61,6 +61,8 @@ var EVENT_SUPPRESSION = {
 /**
  * Provides a queue for collecting `componentDidMount` and
  * `componentDidUpdate` callbacks during the transaction.
+ * 
+ * TODO:
  */
 var ON_DOM_READY_QUEUEING = {
   /**
@@ -118,6 +120,7 @@ function ReactReconcileTransaction(useCreateElement: boolean) {
   // accessible and defaults to false when `ReactDOMComponent` and
   // `ReactDOMTextComponent` checks it in `mountComponent`.`
   this.renderToStaticMarkup = false;
+  // TODO: 返回一个 queue
   this.reactMountReady = CallbackQueue.getPooled(null);
   this.useCreateElement = useCreateElement;
 }

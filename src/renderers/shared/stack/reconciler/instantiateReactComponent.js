@@ -38,6 +38,7 @@ function getDeclarationErrorAddendum(owner) {
  *
  * @param {function} type
  * @return {boolean} Returns true if this is a valid internal type.
+ * TODO: 查看是否是内部组件类型
  */
 function isInternalComponentType(type) {
   return (
@@ -55,6 +56,7 @@ function isInternalComponentType(type) {
  * @param {boolean} shouldHaveDebugID
  * @return {object} A new instance of the element's constructor.
  * @protected
+ * TODO:
  */
 function instantiateReactComponent(node, shouldHaveDebugID) {
   var instance;
