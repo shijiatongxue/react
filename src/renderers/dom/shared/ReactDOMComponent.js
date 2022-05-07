@@ -1035,6 +1035,7 @@ ReactDOMComponent.Mixin = {
         }
       } else if (registrationNameModules.hasOwnProperty(propKey)) {
         if (nextProp) {
+          // 处理监听器
           enqueuePutListener(this, propKey, nextProp, transaction);
         } else if (lastProp) {
           deleteListener(this, propKey);

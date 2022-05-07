@@ -341,6 +341,7 @@ var ReactCompositeComponent = {
         context,
       );
     } else {
+      // TODO: 挂载组件和子组件
       markup = this.performInitialMount(
         renderedElement,
         hostParent,
@@ -350,7 +351,9 @@ var ReactCompositeComponent = {
       );
     }
 
-    // 执行 componentDidMount 函数
+    /**
+     * TODO: 执行 componentDidMount 函数
+     */
     if (inst.componentDidMount) {
       if (__DEV__) {
         transaction.getReactMountReady().enqueue(() => {
@@ -492,7 +495,7 @@ var ReactCompositeComponent = {
       debugID = this._debugID;
     }
 
-    // 如果存在 willMount 函数
+    // TODO: 如果存在 willMount 函数
     if (inst.componentWillMount) {
       if (__DEV__) {
         measureLifeCyclePerf(

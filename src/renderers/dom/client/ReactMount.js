@@ -439,7 +439,7 @@ var ReactMount = {
     );
   },
 
-  // TODO:
+  // TODO: 把 fiber render 到 dom 上
   _renderSubtreeIntoContainer: function(
     parentComponent,
     nextElement,
